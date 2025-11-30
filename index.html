@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/Master Reset.css">
+    <link rel="stylesheet" href="/Mater Framework.css">
+    <title>Document</title>
+    
+    <style>
+
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="dock">
+            <div class="dock-item">
+              <a href="#">Home</a>
+              <div class="text-container">
+              </div>
+            </div>
+            <div class="dock-item">
+              <a href="#">About</a>
+              <div class="text-container">
+              </div>
+            </div>
+            <div class="dock-item">
+              <a href="#">Services</a>
+              <div class="text-container">
+              </div>
+            </div>
+            <div class="dock-item">
+              <a href="#">Contact</a>
+              <div class="text-container">
+              </div>
+            </div>
+        </div>
+        <div class="slideshow">
+            <div class="slide active" style="background-image: url('/image1.png"></div>
+            <div class="slide" style="background-image: url('/image2.png');"></div>
+            <div class="slide" style="background-image: url('/image3.avif');"></div>
+        </div>
+        </section>
+    </div>
+      <footer>Footer Content</footer>   
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+  }, 3000);
+</script>
+<script>
+function getBackgroundBrightness() {
+  const dock = document.querySelector('.dock');
+  const rect = dock.getBoundingClientRect();
+
+  // Sample pixel just behind the dock (middle)
+  const x = rect.left + rect.width / 2;
+  const y = rect.top + rect.height / 2;
+
+  const canvas = document.createElement("canvas");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const ctx = canvas.getContext("2d");
+
+  // Draw visible page
+  ctx.drawImage(document.documentElement, 0, 0);
+
+  const pixel = ctx.getImageData(x, y, 1, 1).data;
+  const brightness = (pixel[0] + pixel[1] + pixel[2]) / 3;
+
+  return brightness;
+}
+
+function updateDockTextColor() {
+  const brightness = getBackgroundBrightness();
+  const dock = document.querySelector('.dock');
+
+  if (brightness > 130) {
+    dock.classList.add("dock-dark-text");   // background is bright → use dark text
+    dock.classList.remove("dock-light-text");
+  } else {
+    dock.classList.add("dock-light-text");  // background is dark → use light text
+    dock.classList.remove("dock-dark-text");
+  }
+}
+
+window.addEventListener('scroll', updateDockTextColor);
+window.addEventListener('load', updateDockTextColor);
+</script>
+
+      
+</body>
+</html>

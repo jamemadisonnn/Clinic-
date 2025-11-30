@@ -1,0 +1,282 @@
+body {
+    background-color: #333;
+}
+
+.container {
+    position: relative; /* Ensure this container defines a stacking context */
+    height: 300vh;
+    background: grey;
+    display: flex;
+    flex-direction: column; /* Allows the nav to be positioned at the top of the container */
+    margin-bottom: 30vh;
+}
+
+
+.logo {
+    height: 50px;
+    width: 100%;
+    background-color: white;
+}
+
+.content {
+    z-index: 10; /* Content will be below the nav */
+}
+
+footer {
+    width: 100%;
+    height: 30vh;
+    background: #333;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    z-index: -1;
+}
+
+
+.img-con {
+    display: flex;
+    flex-wrap: wrap;
+}
+.image {
+    flex: 1;
+    min-width: 300px; /* Adjust this based on your design needs */
+    margin: 5px;
+}
+.image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+}
+
+
+
+
+/* Spacing (Margins and Paddings) */
+.mx-8 { margin: 0px 8px; }
+.mx-16 { margin: 0px 16px; }
+
+/* Spacer System */
+.sp-80 { height: 80px;
+background-color: aqua; }
+.sp-120 { height: 120px; }
+
+
+
+
+
+
+.news-block {
+    border-top: 1px solid black;
+    padding: 24px 0;
+}
+
+.news-block .headline {
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.news-block .summary {
+    font-size: 14px;
+    margin-top: 4px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.news-block .read-time {
+    font-size: 10px;
+    margin-top: 4px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.news-block .bottom-padding {
+    padding-bottom: 24px;
+}
+
+
+
+
+
+
+
+
+.dock {
+    position: fixed;
+    top: 20px; /* Flush with top of site */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 400px; /* Compact iPhone-like width */
+    height: 60px; /* Space for text below buttons */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%); /* For Safari */
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 
+      0 4px 15px rgba(0, 0, 0, 0.1),
+      0 -1px 10px rgba(255, 255, 255, 0.3) inset,
+      0 1px 10px rgba(255, 255, 255, 0.2) inset;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 16px;
+    box-sizing: border-box;
+    z-index: 1000;
+    transition: padding 0.2s ease, top 0.2s ease; /* Smooth width and vertical movement */
+  }
+
+  .dock:hover {
+    padding: 0 24px; /* Wider on hover */
+    transform: translateX(-50%); /* Stay centered */
+    top: 8px; /* Move down slightly on hover */
+  }
+
+  .dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* For text positioning */
+  }
+
+  .dock-item a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 20px;
+    border-radius: 16px;
+    transition: color 0.2s ease, padding 0.2s ease;
+    isolation: isolate;
+    mix-blend-mode: difference;
+  }
+
+  .dock-item a:hover {
+    color: brown;
+    padding: 8px 22px; /* Slightly wider padding */
+    border: 1px solid white;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .text-container {
+    position: absolute;
+    top: 28px; /* Below button */
+    width: 100%;
+    text-align: center;
+    height: 14px; /* Fixed height to prevent layout shifts */
+    overflow: hidden; /* Ensure no overlap */
+  }
+
+  .original-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    width: 100%;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    
+  }
+
+  .new-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12px;
+    position: absolute;
+    width: 100%;
+    transform: translateY(10px); /* Start below */
+    opacity: 0; /* Hidden by default */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .dock-item:hover .original-text {
+    transform: translateY(-10px); /* Move up and fade out */
+    opacity: 0;
+  }
+
+  .dock-item:hover .new-text {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1;
+  }
+
+
+
+
+
+
+
+    /* Section 4: Another image background */
+    #section4 {
+        height: 100vh;
+        background: url('https://framerusercontent.com/images/HIoOz4gHrwp1vZEPk75j3ORDQ4I.png?width=2880&height=1620') no-repeat center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      }
+
+
+
+        .slideshow {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .slide.active {
+    opacity: 1;
+  }
+
+  /* This is the magic: the leaving image gets strong glass blur */
+  .slide.active ~ .slide,
+  .slide:not(.active) {
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+  }
+
+
+
+/*================== LOCAL FONTS OFFLINE 100% ==================*/
+
+  style
+    @font-face {
+      font-family: 'Satoshi';
+      src: url('/') format('truetype');
+      font-weight: 100 900;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Satoshi';
+      src: url('fonts/Satoshi-Bold.ttf') format('truetype');
+      font-weight: bold;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Clash';
+      src: url('fonts/ClashDisplay-Variable.ttf') format('truetype');
+      font-weight: 200 700;
+      font-display: swap;
+    }
+
+    /* Guna font lokal kat seluruh website */
+    * { font-family: 'Satoshi', system-ui, sans-serif; }
+    h1, h2, .headline, .dock-item a { font-family: 'Clash', 'Satoshi', sans-serif; }
