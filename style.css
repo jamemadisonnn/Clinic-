@@ -149,7 +149,7 @@ background-color: aqua; }
   }
 
   .dock-item a {
-    color: black;
+    color: #000;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
